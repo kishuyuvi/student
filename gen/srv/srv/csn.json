@@ -1,0 +1,115 @@
+{
+  "namespace": "lms",
+  "definitions": {
+    "lms.student": {
+      "kind": "entity",
+      "elements": {
+        "email": {
+          "@Title": "Email",
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "firstName": {
+          "type": "cds.String",
+          "length": 65
+        },
+        "lastName": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "dateSignUp": {
+          "type": "cds.Date"
+        }
+      }
+    },
+    "myfunc": {
+      "@source": "srv/simple.cds",
+      "kind": "service"
+    },
+    "myfunc.Student": {
+      "kind": "entity",
+      "@readonly": true,
+      "@UI.SelectionFields": [
+        {
+          "=": "email"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Label": "email",
+          "Value": {
+            "=": "email"
+          }
+        },
+        {
+          "Label": "firstName",
+          "Value": {
+            "=": "firstName"
+          }
+        },
+        {
+          "Label": "lastName",
+          "Value": {
+            "=": "lastName"
+          }
+        },
+        {
+          "Label": "dateSignUp",
+          "Value": {
+            "=": "dateSignUp"
+          }
+        }
+      ],
+      "@UI.HeaderInfo.$Type": "UI.HeaderInfoType",
+      "@UI.HeaderInfo.TypeName": "Student",
+      "@UI.HeaderInfo.TypeNamePlural": "Student",
+      "@UI.HeaderInfo.Title.Value": "Student s",
+      "@UI.HeaderInfo.Description.Value": {
+        "=": "firstName"
+      },
+      "projection": {
+        "from": {
+          "ref": [
+            "lms.student"
+          ]
+        }
+      },
+      "elements": {
+        "email": {
+          "@Title": "Email",
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "firstName": {
+          "type": "cds.String",
+          "length": 65
+        },
+        "lastName": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "dateSignUp": {
+          "type": "cds.Date"
+        }
+      }
+    },
+    "myfunc.my": {
+      "kind": "function",
+      "params": {
+        "msg": {
+          "type": "cds.String"
+        }
+      },
+      "returns": {
+        "type": "cds.String"
+      }
+    }
+  },
+  "meta": {
+    "creator": "CDS Compiler v3.5.4",
+    "flavor": "inferred"
+  },
+  "$version": "2.0"
+}
